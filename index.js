@@ -5,10 +5,9 @@ const remainingMinesEl = document.getElementById("#remaining-mines");
 const messageEl = document.querySelector(".stat-footer");
 const reloadButton = document.querySelector("#reload-button");
 const soundButton = document.getElementById("sound-state");
-const statContainer = document.querySelector(".article-stat-section");
-const bestTimeEl = [...document.getElementsByClassName("best-time")][0];
-const totalWinEl = [...document.getElementsByClassName("win-total")][0];
-const totalFailEl = [...document.getElementsByClassName("fail-total")][0];
+const bestTimeEl = document.querySelector(".best-time");
+const totalWinEl = document.querySelector(".win-total");
+const totalFailEl = document.querySelector(".fail-total");
 const tutoButton = document.querySelector("#tutoButton");
 const statButton = document.querySelector("#statButton");
 let setGridButtons = document.querySelectorAll(".gamemode-option");
@@ -45,8 +44,6 @@ messageEl.textContent = "";
 bestTimeEl.textContent = "__:__:__";
 totalWinEl.textContent = pad(totalWin);
 totalFailEl.textContent = pad(totalFail);
-
-let statContainerLastContent = statContainer.innerHTML;
 
 let squaresWithMines = [];
 let minesCount = 0;
@@ -324,27 +321,15 @@ soundButton.onclick = () => {
 };
 
 tutoButton.onclick = () => {
-  statContainerLastContent = statContainer.innerHTML;
-  statContainer.innerHTML = `<div>
-  <div class="stat-header">Tuto</div>
-  <p class="tuto">
-  Vous devez déminer ce champ de mines. <br/>
-  Pour cela, il a été découpé en carrés qui peuvent contenir soit une seule mine (M), soit aucune. <br/>
-  Au début, les mines, enterrées, ne sont bien évidement pas visibles.<br/>
-Pour gagner au Démineur, il vous faut déterminer l'emplacement de toutes les mines.<br/>
-Pour atteindre cet objectif, vous pourrez prendre connaissance du nombre de mines  dans le voisinage immédiat d'une case, en cliquant sur celle-ci et à condition qu'elle soit vide. 
-Si jamais vous cliquez sur une case contenant une mine, celle-ci explose et vous perdez.
-Il est possible de planter une roche 🛑 pour marquer l'emplacement supposé d'une mine, en faisant un clic droit.<br/>
-Si la case cliquée est vide, toutes les cases vides adjacentes s'ouvriront recursivement.
-Pour gagner, il ne doit pas y avoir de mines incorrectement marquées avec un drapeau. 
-Par contre, il n'est pas nécessaire de marquer toutes les mines pour terminer; vous avez juste besoin de déterminer toutes les cases vides.<br/>
-Le compteur gauche indique le nombre de mines restant à marquer.<br/>
-Le compteur droit affiche le nombre de secondes écoulées. <br/>
-</p>
-<div class="stat-footer"></div>
-</div>`;
+  [...document.querySelectorAll(".stat-section-tab")].forEach(
+    (el) => (el.style.display = "none")
+  );
+  document.querySelector("#tutoContainer").style.display = "block";
 };
 statButton.onclick = () => {
-  statContainer.innerHTML = statContainerLastContent;
+  [...document.querySelectorAll(".stat-section-tab")].forEach(
+    (el) => (el.style.display = "none")
+  );
+  document.querySelector("#statContainer").style.display = "flex";
 };
 // window.onresize = () => createGrid();

@@ -47,13 +47,45 @@
           </div>
         </div>
         <div class="article-stat-section article-section">
-          <div>
-            <div class="stat-header">Vos stats</div>
-            <p>Meilleur temps: <span class="best-time">15</span></p>
-            <p>Nombre de victoires: <span class="win-total">52</span></p>
-            <p>Nombre de défaites: <span class="fail-total">85</span></p>
+          <div id="tutoContainer" class="stat-section-tab">
+            <div class="stat-header">Tuto</div>
+            <p class="tuto">
+              Vous devez déminer ce champ de mines. <br />
+              Pour cela, il a été découpé en carrés qui peuvent contenir soit
+              une seule mine (M), soit aucune. <br />
+              Au début, les mines, enterrées, ne sont bien évidement pas
+              visibles.<br />
+              Pour gagner au Démineur, il vous faut déterminer l'emplacement de
+              toutes les mines.<br />
+              Pour atteindre cet objectif, vous pourrez prendre connaissance du
+              nombre de mines dans le voisinage immédiat d'une case, en cliquant
+              sur celle-ci et à condition qu'elle soit vide. Si jamais vous
+              cliquez sur une case contenant une mine, celle-ci explose et vous
+              perdez. Il est possible de planter une roche 🛑 pour marquer
+              l'emplacement supposé d'une mine, en faisant un clic droit.<br />
+              Si la case cliquée est vide, toutes les cases vides adjacentes
+              s'ouvriront recursivement. Pour gagner, il ne doit pas y avoir de
+              mines incorrectement marquées avec un drapeau. Par contre, il
+              n'est pas nécessaire de marquer toutes les mines pour terminer;
+              vous avez juste besoin de déterminer toutes les cases vides.<br />
+              Le compteur gauche indique le nombre de mines restant à
+              marquer.<br />
+              Le compteur droit affiche le temps écoulé. <br />
+            </p>
           </div>
-          <div class="stat-footer"></div>
+          <div
+            id="statContainer"
+            class="stat-section-tab"
+            style="display: none"
+          >
+            <div>
+              <div class="stat-header">Vos stats</div>
+              <p>Meilleur temps: <span class="best-time">15</span></p>
+              <p>Nombre de victoires: <span class="win-total">52</span></p>
+              <p>Nombre de défaites: <span class="fail-total">85</span></p>
+            </div>
+            <div class="stat-footer"></div>
+          </div>
         </div>
         <div class="article-gamemode-section article-section">
           <div class="gamemode-container">
