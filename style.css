@@ -193,7 +193,8 @@ main > article > .article-buttons-section {
 
 .tile {
   aspect-ratio: 1/1;
-  width: 21px;
+  /* width: 5vmin; */
+  min-width: 21px;
   /* flex-shrink: 1; */
   display: flex;
   justify-content: center;

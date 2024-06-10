@@ -185,7 +185,7 @@ const handleOnClick = (index, { target }) => {
     playground[index].surrounding.forEach((element) => {
       const safeEl = document.querySelector(`div[data-position='${element}']`);
       if (safeEl && !processedTiles.has(element)) {
-        safeEl.click();
+        setTimeout(() => safeEl.click(), 1);
       }
     });
   }
@@ -211,27 +211,27 @@ const handleOnClick = (index, { target }) => {
     messageEl.classList.add("lose");
     if (soundEnabled) failAudio.play();
     messageEl.textContent = "Game Over!";
+
     if (!gameOver) {
       gameOver = true;
       totalFailEl.textContent = pad(++totalFail);
-    }
-
-    playground[index].squaresWithMines.forEach((element) => {
-      if (!processedTiles.has(element)) {
-        target.style.backgroundColor = "#fa1515";
+      target.style.backgroundColor = "#cc1111";
+      playground[index].squaresWithMines.forEach((element) => {
+        // if (!processedTiles.has(element)) {
         const mine = document.querySelector(`div[data-position='${element}']`);
-        if (mine && !processedTiles.has(element)) {
+        if (mine) {
           mine.style.backgroundColor = "#de1515";
           if (playground[element].blocked) {
             playground[element].blocked = false;
           }
           mine.click();
         }
-      }
-    });
-    [...document.querySelectorAll(".tile")].forEach(
-      (el) => (el.onclick = null)
-    );
+        // }
+      });
+      [...document.querySelectorAll(".tile")].forEach(
+        (el) => (el.onclick = null)
+      );
+    }
   }
 
   target.oncontextmenu = null;
